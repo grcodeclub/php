@@ -1,106 +1,102 @@
-<html>
-    <head>
-        <meta property="og:image" content="https://grcodeclub.gr/files-page/preview/programming/php.png"/>
-        <meta property="og:title" content="GrCode Club | Php - SQL">
-        <script src="https://grcodeclub.github.io/js/add/data.js"></script>
-    </head>
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta property="og:image" content="https://grcodeclub.gr/files-page/preview/programming/php.png"/>
+    <meta property="og:title" content="Php | SQL">
+    <title>GrCode Club</title>
+    <script src="https://grcodeclub.github.io/js/data.js"></script>
+</head>
+<body>
+    <div id="addHeader"></div>
+    <div class="container">
+        <h1 class="title">Php - SQL</h1>
+        <p>Η σύνδεση με μια βάση δεδομένων MySQL στο PHP γίνεται συνήθως με τη χρήση των εντολών που παρέχει το extension mysqli.</p>
 
-    <body>
-        <div class="container">
-            <div id="add_headder_and_menu"></div>
-            <div class="Text"> <!--Αρχή Κειμένου-->
-                <a href="./"><h1 id="back_page"></h1></a>
-                <div class="text_bg"> <!-- Αρχή Background Κειμένου-->
-                    <h1 class="title">Php - SQL</h1>
-                    <p>Η σύνδεση με μια βάση δεδομένων MySQL στο PHP γίνεται συνήθως με τη χρήση των εντολών που παρέχει το extension mysqli.</p>
-
-                    <p>Σύνδεση με Βάση Δεδομένων (MySQL)</p>
-                    <div class="bg_preview">
-                    <div  class="line-numbers"><pre class="code_editor"><code class="language-php">$connection = mysqli_connect("localhost", "user", "password", "database");</code></pre></div></div>
-                    <p></p>
-                    <div class="bg_preview">
-                        <div class="appearance">
-                            <div class="space">
-                                <div class="buttons1"> </div>
-                                <div class="buttons2"> </div>
-                                <div class="buttons3"></div>
-                            </div>
-                        </div>
-                    <div  class="line-numbers"><pre class="code_editor"><code class="language-php">&lt;?php
-    $servername = "localhost";
-    $username = "your_username";
-    $password = "your_password";
-    $database = "your_database";
-    
-     // Create connection
-    $conn = new mysqli($servername, $username, $password, $database);
-    
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    
-    echo "Connected successfully";
-    
-    // Close the connection
-    $conn->close();
-?></code></pre></div></div>
-
-                    <p>Εδώ έχετε ένα παράδειγμα πώς μπορείτε να κάνετε ένα απλό ερώτημα SELECT:</p>
-                    <div class="bg_preview">
-                        <div class="appearance">
-                            <div class="space">
-                                <div class="buttons1"> </div>
-                                <div class="buttons2"> </div>
-                                <div class="buttons3"></div>
-                            </div>
-                        </div>
-                    <div  class="line-numbers"><pre class="code_editor"><code class="language-php"><?php
+        <p>Σύνδεση με Βάση Δεδομένων (MySQL)</p>
+        <div class="bg_preview">
+        <div  class="line-numbers"><pre class="code_editor"><code class="language-php">$connection = mysqli_connect("localhost", "user", "password", "database");</code></pre></div></div>
+        <p></p>
+        <div class="bg_preview">
+            <div class="appearance">
+                <div class="space">
+                    <div class="buttons1"> </div>
+                    <div class="buttons2"> </div>
+                    <div class="buttons3"></div>
+                </div>
+            </div>
+        <div  class="line-numbers"><pre class="code_editor"><code class="language-php">&lt;?php
 $servername = "localhost";
 $username = "your_username";
 $password = "your_password";
 $database = "your_database";
-                        
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+
+echo "Connected successfully";
+
+// Close the connection
+$conn->close();
+?></code></pre></div></div>
+
+        <p>Εδώ έχετε ένα παράδειγμα πώς μπορείτε να κάνετε ένα απλό ερώτημα SELECT:</p>
+        <div class="bg_preview">
+            <div class="appearance">
+                <div class="space">
+                    <div class="buttons1"> </div>
+                    <div class="buttons2"> </div>
+                    <div class="buttons3"></div>
+                </div>
+            </div>
+        <div  class="line-numbers"><pre class="code_editor"><code class="language-php"><?php
+$servername = "localhost";
+$username = "your_username";
+$password = "your_password";
+$database = "your_database";
+            
 // Δημιουργία της σύνδεσης
 $conn = new mysqli($servername, $username, $password, $database);
-                        
+            
 // Έλεγχος Σύνδεσης
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+die("Connection failed: " . $conn->connect_error);
 }
-                        
+            
 // Ερώτημα
 $sql = "SELECT id, name, email FROM users";
 $result = $conn->query($sql);
-                        
+            
 if ($result->num_rows > 0) {
-    // Εξαγωγή δεδομένων για κάθε εγγραφή
-    while($row = $result->fetch_assoc()) {
-        echo "ID: " . $row["id"]. " - Name: " . $row["name"]. " - Email: " . $row["email"]. "<br>";
-    }
-} else {
-    echo "No results found";
+// Εξαγωγή δεδομένων για κάθε εγγραφή
+while($row = $result->fetch_assoc()) {
+echo "ID: " . $row["id"]. " - Name: " . $row["name"]. " - Email: " . $row["email"]. "<br>";
 }
-                        
+} else {
+echo "No results found";
+}
+            
 // Κλείνει η σύνδεση
 $conn->close();
 ?></code></pre></div></div>
 
-                    <p>Να αποθηκεύουμε τα αποτελέσματα σε μεταβλητές</p>
-                    <div class="bg_preview">
-                    <div  class="line-numbers"><pre class="code_editor"><code class="language-php"> while($row = $result->fetch_assoc()) {
-    $id = $row["id"];
-    $name = $row["name"];
-    $email = $row["email"];
-    
-    echo "ID: " . $id . " - Name: " . $name . " - Email: " . $email . "<br>";
+        <p>Να αποθηκεύουμε τα αποτελέσματα σε μεταβλητές</p>
+        <div class="bg_preview">
+        <div  class="line-numbers"><pre class="code_editor"><code class="language-php"> while($row = $result->fetch_assoc()) {
+$id = $row["id"];
+$name = $row["name"];
+$email = $row["email"];
+
+echo "ID: " . $id . " - Name: " . $name . " - Email: " . $email . "<br>";
 }</code></pre></div></div>
-
-
-                </div><!-- Τέλος Background Κειμένου-->
-            </div> <!--Τέλος Κειμένου-->
-
-        </div> <!--Τέλος container-->
-     <footer id="addFooter"></footer> <!-- Footer -->
-    </body>
+    </div>
+</div>
+    </div>
+    <div id="addFooter"></div>
+</body>
 </html>
